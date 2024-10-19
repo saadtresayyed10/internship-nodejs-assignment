@@ -7,9 +7,11 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
+const PORT = 5000 || process.env.PORT;
+
 app.use("/api/services", servicesRoutes);
 
-app.listen(8080, () => {
+app.listen(PORT, () => {
   connectToMongoDB();
-  console.log("Server running");
+  console.log("Server running on PORT:", PORT);
 });
